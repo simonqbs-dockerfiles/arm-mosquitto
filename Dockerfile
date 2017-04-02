@@ -1,5 +1,11 @@
 FROM hypriot/rpi-alpine:3.5
 
+ARG VCS_REF
+
+LABEL \ 
+	org.label-schema.vcs-ref=$VCS_REF
+	org.label-schema.vcs-url="https://github.com/simonqbs-dockerfiles/arm-mosquitto"
+
 ENV MOSQUITTO_AUTH_PLUGIN_VERSION 0.1.1
 
 RUN \
