@@ -8,8 +8,8 @@ env:
 
 before_install:
   - echo $(docker -v)
-  - apt-get update
-  - apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
   - echo $(docker -v)
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 
