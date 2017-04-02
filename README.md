@@ -1,5 +1,9 @@
 # simonqbs/arm-mosquitto
 
+[![build status](https://gitlab.com/simonqbs-dockerfiles/arm-mosquitto/badges/master/build.svg)](https://gitlab.com/simonqbs-dockerfiles/arm-mosquitto/commits/master)
+[![](https://images.microbadger.com/badges/image/simonqbs/arm-mosquitto.svg)](https://microbadger.com/images/simonqbs/arm-mosquitto "Get your own image badge on microbadger.com")
+
+
 This is a docker image for running [mosquitto](https://mosquitto.org) in a docker container on
 an arm(hf) based system. Comes bundled with [mosquitto-auth-plug](https://github.com/jpmens/mosquitto-auth-plug) with postgresql and sqlite backend support.  
   
