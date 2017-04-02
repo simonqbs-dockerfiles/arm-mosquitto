@@ -33,4 +33,4 @@ EXPOSE 1883 9001
 
 USER mosquitto:mosquitto
 
-CMD mosquitto
+CMD ["mosquitto", "-c", "/etc/mosquitto/mosquitto.conf"]
