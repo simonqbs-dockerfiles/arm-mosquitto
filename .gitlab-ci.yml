@@ -1,0 +1,16 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+variables:
+  - IMAGE_NAME: simonqbs/rpi-mosquitto
+
+build:
+  stage: build
+  script:
+    - export IMAGE_TAG=latest
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
+    - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+    - docker build --pull -t "$IMAGE_NAME:$IMAGE_TAG" .
+    - docker push "$IMAGE_NAME:$IMAGE_TAG"

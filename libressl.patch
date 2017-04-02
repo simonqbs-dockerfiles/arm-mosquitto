@@ -1,0 +1,30 @@
+--- cache.c
++++ cache-libressl.c
+@@ -39,13 +39,17 @@
+ #include "uthash.h"
+ #include "log.h"
+ 
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#define HAVE_OPENSSL_OPAQUE_STRUCTS
++#endif
++
+ static unsigned int sha_hash(const char *data, size_t size, unsigned char *out)
+ {
+ 	unsigned int md_len = -1;
+ 	const EVP_MD *md = EVP_get_digestbyname("SHA1");
+ 
+ 	if (md != NULL) {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000
++#ifndef HAVE_OPENSSL_OPAQUE_STRUCTS
+ 		EVP_MD_CTX *mdctx = EVP_MD_CTX_create();
+ #else
+ 		EVP_MD_CTX *mdctx = EVP_MD_CTX_new();
+@@ -54,7 +58,7 @@
+ 		EVP_DigestInit_ex(mdctx, md, NULL);
+ 		EVP_DigestUpdate(mdctx, data, size);
+ 		EVP_DigestFinal_ex(mdctx, out, &md_len);
+-#if OPENSSL_VERSION_NUMBER < 0x10100000
++#ifndef HAVE_OPENSSL_OPAQUE_STRUCTS
+ 		EVP_MD_CTX_destroy(mdctx);
+ #else
+ 		EVP_MD_CTX_free(mdctx);
