@@ -1,6 +1,6 @@
 # simonqbs/arm-mosquitto
 
-[![build status](https://gitlab.com/simonqbs-dockerfiles/arm-mosquitto/badges/master/build.svg)](https://gitlab.com/simonqbs-dockerfiles/arm-mosquitto/commits/master)
+[![Build Status](https://travis-ci.org/simonqbs-dockerfiles/arm-mosquitto.svg?branch=master)](https://travis-ci.org/simonqbs-dockerfiles/arm-mosquitto)
 [![](https://images.microbadger.com/badges/image/simonqbs/arm-mosquitto.svg)](https://microbadger.com/images/simonqbs/arm-mosquitto "Get your own image badge on microbadger.com")
 
 
