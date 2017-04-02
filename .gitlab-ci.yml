@@ -4,7 +4,7 @@ services:
   - docker:dind
 
 variables:
-  IMAGE_NAME: simonqbs/rpi-mosquitto
+  IMAGE_NAME: simonqbs/arm-mosquitto
 
 build:
   stage: build
