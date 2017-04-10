@@ -11,7 +11,7 @@ LABEL \
 ENV MOSQUITTO_AUTH_PLUGIN_VERSION 0.1.1
 
 RUN \
-	apk add --no-cache mosquitto mosquitto-clients \
+	apk add --no-cache mosquitto mosquitto-clients su-exec \
 	&& cp /etc/mosquitto/mosquitto.conf /etc/mosquitto/mosquitto.dist.conf
 
 COPY libressl.patch /build/
@@ -34,11 +34,11 @@ RUN \
 	&& rm -rf /var/lib/cache/apk
 
 COPY mosquitto.conf /etc/mosquitto/
+COPY docker-entrypoint.sh /usr/local/bin/
 
 VOLUME ["/var/lib/mosquitto"]
 
 EXPOSE 1883 9001
 
-USER mosquitto:mosquitto
-
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["mosquitto", "-c", "/etc/mosquitto/mosquitto.conf"]
